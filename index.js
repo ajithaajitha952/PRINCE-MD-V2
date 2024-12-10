@@ -7,6 +7,7 @@ const {
   DisconnectReason, getAggregateVotesInPollMessage 
 } = require("@whiskeysockets/baileys")
 const pino = require('pino')
+const express = require("express")
 const fs = require('fs')
 const FileType = require('file-type')
 const path = require('path')
@@ -31,6 +32,8 @@ low = require('./lib/lowdb')
 
 const { Low, JSONFile } = low
 const mongoDB = require('./lib/mongoDB')
+const app = express()
+const port = process.env.PORT || 5000
 
 const { imageToWebp, videoToWebp, writeExifImg, writeExifVid } = require('./lib/exif');
 const { smsg, isUrl, generateMessageTag, getBuffer, getSizeMedia, fetchJson, sleep } = require('./lib/myfunc');
@@ -708,7 +711,10 @@ return Taira
 async function startBot() {
 try {
 	await getSession(global.SESSION_ID);
-        TairaStart();
+        app.listen(port, () => console.log(`Server listening on port http://localhost:${port}`));
+setTimeout(() => {
+TairaStart()
+}, 4000);
 } catch (error) {
 	console.log("Encountered Error", error)
 }
