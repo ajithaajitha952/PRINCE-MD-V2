@@ -38,6 +38,7 @@ const modapk = require("tod-api");
 const { hentai } = require('./lib/scraper2.js');
 const { instadl } = require('./lib/instadl');
 const ty = eco.connect('mongodb+srv://Arch:1t6l2G0r6nagLlOb@cluster0.gedh4.mongodb.net/?retryWrites=true&w=majority');
+const { uploadMedia, handleMediaUpload } = require('./lib/catbox'); 
 const { isLimit, limitAdd, getLimit, giveLimit, kurangBalance, getBalance, isGame, gameAdd, givegame, cekGLimit } = require('./lib/limit.js');
 const githubstalk = require('./lib/githubstalk');
 let { covid } = require('./lib/covid.js');
@@ -394,7 +395,7 @@ const v2features = () =>{
     // //Dm and Groups Autoreply/Bot chat
 
     if (!isCmd && !m.isGroup && global.CHATBOT ){
-      const botreply = await axios.get(`https://api.nexoracle.com/ai/chatgpt?apikey=free_key@maher_apis&prompt=[${budy}]`)
+      const botreply = await axios.get(`https://api.nexoracle.com/ai/chatgpt?apikey=free_key@maher_apis&prompt=[${msg}]=[${budy}]`)
      txt = `${botreply.result}`
      // m.reply(txt)
       Taira.sendMessage(m.chat, {text: txt}, {quoted: statrp})
@@ -3523,47 +3524,18 @@ case 'tovv': {
       }
         break;
 
-      case "tourl": case 'url':
-        if (isBan) return reply(mess.banned);
-        if (isBanChat) return reply(mess.bangc);
+      case 'tourl': {
+  if (!isMedia) return reply("Where Is The Media?");
+  let media = await Taira.downloadAndSaveMediaMessage(quoted);
+  let mediaUrl = await handleMediaUpload(m, mime);  // Call the media upload function
 
-        let { GraphOrg } = require("./lib/uploader");
-        if (!m.quoted) {
-          //
-          Taira.sendMessage(from, { react: { text: "❔", key: m.key } })
-          return m.reply(
-            `With caption not working, first send an *Image* / *Video* to generate a link! then tag with *${prefix}tourl*`
-          );
-        }
-        let media5 = await Taira.downloadAndSaveMediaMessage(quoted);
-        if (/image/.test(mime)) {
-          //
-          let anu = await GraphOrg(media5);
-          m.reply(`*Image URL:* \n\n${util.format(anu)}\n`);
-        } else if (/video/.test(mime)) {
-          //
-          try {
-            let anu = await GraphOrg(media5);
-            m.reply(`*Video URL:* \n\n${util.format(anu)}\n`);
-          } catch (e) {
-            //
-            await fs.unlinkSync(media5);
-            return Taira.sendMessage(
-              m.from,
-              {
-                text: `*video size is too big!*\n\n*Max video size:* 5MB`,
-              },
-              { quoted: m }
-            );
-          }
-        } else {
-          //
-          return m.reply(
-            `Quote an *Image* / *Video* to generate a link!`
-          );
-        }
-        await fs.unlinkSync(media5);
-        break;
+  if (mediaUrl.startsWith("http")) {  // If media was successfully uploaded
+    reply('Url : ' + mediaUrl);  // Reply with the media URL
+  } else {
+    reply(mediaUrl);  // If the response was an error message
+  }
+}
+break;
 
 
 
@@ -4137,19 +4109,19 @@ case "video":
         {
           if (!text) return reply("What video do you want to download ");
         let kyuu = await fetchJson (`https://api.agatz.xyz/api/ytsearch?message=${text}`);
-        let tylor = await fetchJson (`https://api.agatz.xyz/api/ytmp4?url=${kyuu.data[0].url}`);
+        let tylor = await fetchJson (`https://bk9.fun/download/youtube?url=${kyuu.data[0].url}`);
          await Taira.sendMessage(
               m.chat,
               {
-                video: { url: tylor.data[0].downloadUrl },
-                fileName: `${tylor.data[0].title}.mp4`,
+                video: { url: tylor.BK9[0].mediaLink },
+                fileName: `${tylor.BK9[0].title}.mp4`,
                 mimetype: "video/mp4",
                 contextInfo: {
         externalAdReply: {
           title: `PRINCE MD V2`,
-          body: `${tylor.data[0].title}.mp4`,
+          body: `${tylor.BK9[0].title}.mp4`,
           thumbnailUrl: `https://i.imgur.com/jCrFYOL.jpeg`,
-          sourceUrl: `${tylor.data[0].downloadUrl}`,
+          sourceUrl: `${tylor.BK9[0].mediaLink}`,
           mediaType: 2,
           showAdAttribution: true,
           renderLargerThumbnail: false
@@ -4164,19 +4136,19 @@ case "video":
         {
           if (!text) return reply("What song do you want to download ");
         let kyuu = await fetchJson (`https://api.agatz.xyz/api/ytsearch?message=${text}`);
-        let tylor = await fetchJson (`https://api.agatz.xyz/api/ytmp3?url=${kyuu.data[0].url}`);
+        let tylor = await fetchJson (`https://api-pink-venom.vercel.app/api/ytdl?url=${kyuu.data[0].url}`);
          await Taira.sendMessage(
               m.chat,
               {
-                audio: { url: tylor.data[0].downloadUrl },
-                fileName: `${tylor.data[0].title}.mp3`,
+                audio: { url: tylor.response.mp3 },
+                fileName: `${tylor.response.title}.mp3`,
                 mimetype: "audio/mpeg",
                 contextInfo: {
         externalAdReply: {
           title: `PRINCE MD V2`,
-          body: `${tylor.data[0].title}.mp3`,
+          body: `${tylor.response.title}.mp3`,
           thumbnailUrl: `https://i.imgur.com/jCrFYOL.jpeg`,
-          sourceUrl: `${tylor.data[0].downloadUrl}`,
+          sourceUrl: `${tylor.response.mp3}`,
           mediaType: 2,
           showAdAttribution: true,
           renderLargerThumbnail: false
