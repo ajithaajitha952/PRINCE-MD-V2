@@ -12,11 +12,11 @@ global.antitags = false;
 //auto functioner
 global.autoTyping = false;                //make true to enable auto typing
 global.autoRecord = false;                //make true to enable auto recording
-global.autoviewstatus = true;                 //make true to view statuses 
+global.autoviewstatus = false;                 //make true to view statuses 
 global.anticall = false
 
 
-global.SESSION_ID = process.env.SESSION_ID || "taira_tech-z0cQhYTZ#1U_vMLKN4LDSGn6jWK1d886qh9TXTqvz7L9g2QfXlUU"
+global.SESSION_ID = process.env.SESSION_ID || "-z0cQhYTZ#1U_vMLKN4LDSGn6jWK1d886qh9TXTqvz7L9g2QfXlUU"
 global.Owner = ["237682698517"]; //like 2347080968564 
 global.OwnerName =  "PRINCE";
 global.BotName = "PRINCE-MD-V2";
