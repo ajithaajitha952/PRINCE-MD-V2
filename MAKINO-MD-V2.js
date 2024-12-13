@@ -974,9 +974,7 @@ break
   
     if (isBan) return reply(mess.banned);	 			
     if (isBanChat) return reply(mess.bangc);
-    if (!isCreator) return reply(mess.botowner)
-      Taira.sendMessage(from, { react: { text: "🌝" , key: m.key }})
-
+    if (!isCreator) return reply(mess.botowner);
     if (args.length !== 1) {
       return reply(`Please provide a single character as the new prefix.`);
     } else {
@@ -995,7 +993,6 @@ break
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
 
-        Taira.sendMessage(from, { react: { text: "🌟", key: m.key } })
         Taira.sendContact(m.chat, Taira.user.id.replace(/@s.whatsapp.net/gi, ""), m)
 	Taira.sendMessage(m.chat, { text: `http://t.me/FARADAY_11` }, { quoted:statrp })
       }
@@ -1005,7 +1002,6 @@ break
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
           try {
-            await Taira.sendMessage(from, { react: { text: "❤", key: m.key } });
             let { data } = await axios.get('https://github.com/Mayelprince/PRINCE-MD-V2');
             let teks = `*PRINCE-MD-V2*\n\n*Total Stars*: ${data.stargazers_count}⭐\n*Total Forks*: ${data.forks_count} forks\n*GitHub*: github.com/Mayelprince/PRINCE-MD-V2\n\nDon't forget to follow me on *GitHub* and give a ⭐️ to my projects.`;
   
@@ -2089,8 +2085,7 @@ case 'tovv': {
       case 'getcase':
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-	if(!isCreator) return reply(mess.botowner)
-        Taira.sendMessage(from, { react: { text: "🫡", key: m.key } })
+	if(!isCreator) return reply(mess.botowner);
         const getCase = (cases) => {
           return "case" + `'${cases}'` + fs.readFileSync("MAKINO-MD-V2.js").toString().split('case \'' + cases + '\'')[1].split("break;")[0] + "break;"
         }
@@ -2098,40 +2093,34 @@ case 'tovv': {
         break;
 
 
-      case 'addcase': {
+case 'addcase': {
+                if (!isCreator) return reply('?')
+    if (!text) return reply("Add the case you want to input");
+const namaFile = './MAKINO-MD-V2.js';
+const caseBaru = `${text}`;
+fs.readFile(namaFile, 'utf8', (err, data) => {
+    if (err) {
+        console.error('An error occurred while reading the file:', err);
+        return;
+    }
+    const posisiAwalGimage = data.indexOf("case 'addcase':");
 
-        if (isBan) return reply(mess.banned);
-        if (isBanChat) return reply(mess.bangc);
-	if (!isCreator) return reply(mess.botowner)
-        if (args.length < 2) {
-          return reply('Invalid usage! Please provide the case name and its functionality.');
-        }
-        const caseName = args[0];
-        const functionality = args.slice(1).join(' ');
-        fs.readFile('./MAKINO-MD-V2.js', 'utf8', (err, data) => {
-          if (err) {
-            console.error('Error reading MAKINO-MD-V2.js:', err);
-            return reply('Failed to add case. Please try again later.');
-          }
-          const newCase = `
-          case '${caseName}': {
-            ${functionality}
-          }
-          break;
-          `;
-          const insertIndex = data.indexOf('switch (command) {') + 'switch (command) {'.length;
-          const newData = data.slice(0, insertIndex) + newCase + data.slice(insertIndex);
-          fs.writeFile('./MAKINO-MD-V2.js', newData, 'utf8', (err) => {
+    if (posisiAwalGimage !== -1) {
+        const kodeBaruLengkap = data.slice(0, posisiAwalGimage) + '\n' + caseBaru + '\n' + data.slice(posisiAwalGimage);
+        fs.writeFile(namaFile, kodeBaruLengkap, 'utf8', (err) => {
             if (err) {
-              console.error('Error writing to MAKINO-MD-V2.js:', err);
-              reply('Failed to add case. Please try again later.');
+                reply('Error File:', err);
             } else {
-              reply('New case added successfully!');
+                reply('Success Adding case');
             }
-          });
         });
-      }
-        break;
+    } else {
+        reply('Failed to Add case');
+    }
+});
+
+}
+break;
 
 
       case 'emoji': {
@@ -2894,8 +2883,7 @@ case 'tovv': {
         if (isBanChat) return reply(mess.bangc);
         if (!m.isGroup) return reply(mess.grouponly);
         if (!isBotAdmins) return reply(mess.botadmin);
-        if (!isAdmins && !isCreator) return reply(mess.useradmin)
-	 Taira.sendMessage(from, { react: { text: "🥺", key: m.key } })
+        if (!isAdmins && !isCreator) return reply(mess.useradmin);
         const delay = time => new Promise(res => setTimeout(res, time));
         let mentioned = participants.map(v => v.jid)
 	await reply("Kicking all members")
@@ -3031,32 +3019,24 @@ case 'tovv': {
 	}
          break
 	
-      case 'promote': case 'admin': {
-        if (isBan) return reply(mess.banned);
-        if (isBanChat) return reply(mess.bangc);
-        if (!m.isGroup) return reply(mess.grouponly);
-        if (!isBotAdmins) return reply(mess.botadmin);
-        if (!isAdmins && !isCreator) return reply(mess.useradmin)
-        Taira.sendMessage(from, { react: { text: "🫡", key: m.key } })
-        let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
-        await reply(citel.pushname(users) + "promoted successfully")
-        await Taira.groupParticipantsUpdate(m.chat, [users], 'promote').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
-      }
-        break;
+case "promote":{
+if (m?.isGroup && !isAdmins && !isGroupOwner && isBotAdmins) return
+if (!text && !m?.quoted) reply('Enter the number you want to promote or reply the person with the promote command')
+let users = m?.quoted ? m?.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+await Taira.groupParticipantsUpdate(m?.chat, [users], 'promote').catch(console.log)
+await reply('user promoted successfully   ✅' )
+}
+break
 
 
-      case 'demote': case 'unadmin': {
-        if (isBan) return reply(mess.banned);
-        if (isBanChat) return reply(mess.bangc);
-        if (!m.isGroup) return reply(mess.grouponly);
-        if (!isBotAdmins) return reply(mess.botadmin);
-        if (!isAdmins && !isCreator) return reply(mess.useradmin)
-        Taira.sendMessage(from, { react: { text: "🫡", key: m.key } })
-        let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
-        await reply(citel.pushname(users) + "demoted successfully")
-        await Taira.groupParticipantsUpdate(m.chat, [users], 'demote').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
-      }
-        break;
+case "demote":{
+if (m?.isGroup && !isAdmins && !isGroupOwner && isBotAdmins) return
+if (!text && !m?.quoted) reply('Enter the number you want to demote')
+let users = m?.quoted ? m?.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+await Taira.groupParticipantsUpdate(m?.chat, [users], 'demote').catch(console.log)
+await reply('user demoted successfully ✅')
+}
+break
 
 
       case 'add': {
@@ -3872,7 +3852,24 @@ case 'ytmp3':
 }
 break;
 
-case 'ytdl': case 'ytmp4': {
+case 'ytv': {
+    if (isBan) return reply(mess.banned);
+    if (isBanChat) return reply(mess.bangc);
+    if (!q) return reply("Provide a YouTube video link")
+    let apiUrl = `https://exonity.tech/api/ytdlp2-faster?apikey=adminsepuh&url=${encodeURIComponent(q)}`;
+    const fetch = require('node-fetch');
+    let response = await fetch(apiUrl);
+    let jsonResponse = await response.json();
+    let videoUrl = jsonResponse.result.video;
+    Taira.sendMessage(from, { 
+        video: { url: videoUrl }, 
+        mimetype: "video/mp4", 
+        caption: '> *PRINCE-MD-V2*' 
+    }, { quoted: m });
+    break;
+}
+
+case 'ytdggg': case 'ytxxxx': {
       if (isBan) return reply(mess.banned);
       if (isBanChat) return reply(mess.bangc);
     Taira.sendMessage(from, { react: { text: "🍃", key: m.key } });
@@ -4105,23 +4102,23 @@ case 'ytdl': case 'ytmp4': {
         break;
 
 case "video":
-      case "ytv":
+      case "ytmp4":
         {
           if (!text) return reply("What video do you want to download ");
         let kyuu = await fetchJson (`https://api.agatz.xyz/api/ytsearch?message=${text}`);
-        let tylor = await fetchJson (`https://bk9.fun/download/youtube?url=${kyuu.data[0].url}`);
+        let tylor = await fetchJson (`https://exonity.tech/api/ytdlp2-faster?apikey=adminsepuh&url=${kyuu.data[0].url}`);
          await Taira.sendMessage(
               m.chat,
               {
-                video: { url: tylor.BK9[0].mediaLink },
-                fileName: `${tylor.BK9[0].title}.mp4`,
+                video: { url: tylor.result[0].video },
+                fileName: `${tylor.result[0].title}.mp4`,
                 mimetype: "video/mp4",
                 contextInfo: {
         externalAdReply: {
           title: `PRINCE MD V2`,
-          body: `${tylor.BK9[0].title}.mp4`,
+          body: `${tylor.result[0].title}.mp4`,
           thumbnailUrl: `https://i.imgur.com/jCrFYOL.jpeg`,
-          sourceUrl: `${tylor.BK9[0].mediaLink}`,
+          sourceUrl: `${tylor.result[0].video}`,
           mediaType: 2,
           showAdAttribution: true,
           renderLargerThumbnail: false
