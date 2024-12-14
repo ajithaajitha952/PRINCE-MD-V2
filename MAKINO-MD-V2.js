@@ -4110,15 +4110,15 @@ case "video":
          await Taira.sendMessage(
               m.chat,
               {
-                video: { url: tylor.result[0].video },
-                fileName: `${tylor.result[0].title}.mp4`,
+                video: { url: tylor.result.video },
+                fileName: `${tylor.result.title}.mp4`,
                 mimetype: "video/mp4",
                 contextInfo: {
         externalAdReply: {
           title: `PRINCE MD V2`,
-          body: `${tylor.result[0].title}.mp4`,
+          body: `${tylor.result.title}.mp4`,
           thumbnailUrl: `https://i.imgur.com/jCrFYOL.jpeg`,
-          sourceUrl: `${tylor.result[0].video}`,
+          sourceUrl: `${tylor.result.video}`,
           mediaType: 2,
           showAdAttribution: true,
           renderLargerThumbnail: false
@@ -4129,23 +4129,50 @@ case "video":
       break;
 
      case "play":
-      case "song":
+      case "ytmp3":
         {
           if (!text) return reply("What song do you want to download ");
         let kyuu = await fetchJson (`https://api.agatz.xyz/api/ytsearch?message=${text}`);
-        let tylor = await fetchJson (`https://api-pink-venom.vercel.app/api/ytdl?url=${kyuu.data[0].url}`);
+        let tylor = await fetchJson (`https://api.agatz.xyz/api/ytmp3?url=${kyuu.data[0].url}`);
          await Taira.sendMessage(
               m.chat,
               {
-                audio: { url: tylor.response.mp3 },
-                fileName: `${tylor.response.title}.mp3`,
+                audio: { url: tylor.data[0].downloadUrl },
+                fileName: `${tylor.data[0].title}.mp3`,
                 mimetype: "audio/mpeg",
                 contextInfo: {
         externalAdReply: {
           title: `PRINCE MD V2`,
-          body: `${tylor.response.title}.mp3`,
+          body: `${tylor.data[0].title}.mp3`,
           thumbnailUrl: `https://i.imgur.com/jCrFYOL.jpeg`,
-          sourceUrl: `${tylor.response.mp3}`,
+          sourceUrl: `${tylor.data[0].downloadUrl}`,
+          mediaType: 2,
+          showAdAttribution: true,
+          renderLargerThumbnail: false
+        }
+      }
+    }, { quoted: m });
+          }
+      break;
+
+     case "song":
+      case "music":
+        {
+          if (!text) return reply("What music do you want to download ");
+        let kyuu = await fetchJson (`https://api.agatz.xyz/api/ytsearch?message=${text}`);
+        let tylor = await fetchJson (`https://exonity.tech/api/ytdlp2-faster?apikey=adminsepuh&url=${kyuu.data[0].url}`);
+         await Taira.sendMessage(
+              m.chat,
+              {
+                audio: { url: tylor.result.audio },
+                fileName: `${tylor.result.title}.mp3`,
+                mimetype: "audio/mpeg",
+                contextInfo: {
+        externalAdReply: {
+          title: `PRINCE MD V2`,
+          body: `${tylor.result.title}.mp3`,
+          thumbnailUrl: `https://i.imgur.com/jCrFYOL.jpeg`,
+          sourceUrl: `${tylor.result.audio}`,
           mediaType: 2,
           showAdAttribution: true,
           renderLargerThumbnail: false
