@@ -2817,16 +2817,15 @@ break;
 
 
       case 'tagall': case 'all': {
+         
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         if (!m.isGroup) return reply(mess.grouponly);
         if (!isAdmins && !isCreator) return reply(mess.useradmin)
-        Taira.sendMessage(from, { react: { text: "😳", key: m.key } })
-        let teks = `PRINCE-MD-V2
-
-*Message : ${args.join(" ") ? args.join(" ") : 'no message'}*\n\n ${readmore}`
+        Taira.sendMessage(from, { react: { text: "😎", key: m.key } })
+        let teks = `*▢ Group*: ${groupMetadata.subject}\n*▢ Message*: ${args.join(" ") ? args.join(" ") : '* no message *'} \n ┌───⊷MENTIONS ───⊷\n${readmore}` 
         for (let mem of participants) {
-          teks += `🏷️ @${mem.id.split('@')[0]}\n`
+          teks += `▢ @${mem.id.split('@')[0]}\n`
         }
         Taira.sendMessage(m.chat, { text: teks, mentions: participants.map(a => a.id) }, { quoted: statrp })
       }
@@ -3695,7 +3694,7 @@ var hassdl = anu.BK9[0].url
 await Taira.sendMessage(m.chat, {
 video: {
 url: hassdl,
-caption: 'PRINCE-MD-V2'
+caption: '> 𝙋𝙍𝙄𝙉𝘾𝙀 𝙈𝘿 𝙑𝙄𝘿𝙀𝙊 𝘿𝙊𝙒𝙉𝙇𝙊𝘼𝘿𝙀𝙍'
 }
 }, {
 quoted: m
@@ -3717,7 +3716,7 @@ break;
                 mimetype: "application/vnd.android.package-archive",
                 contextInfo: {
         externalAdReply: {
-          title: `PRINCE-MD-V2`,
+          title: `ᴘʀɪɴᴄᴇ-ᴍᴅ-ᴠ2`,
           body: `${tylor.BK9.name}`,
           thumbnailUrl: `${tylor.BK9.icon}`,
           sourceUrl: `${tylor.BK9.dllink}`,
@@ -3795,7 +3794,7 @@ case 'fbdl': {
     Taira.sendMessage(from, { 
         video: { url: videoUrl }, 
         mimetype: "video/mp4", 
-        caption: '> *PRINCE-MD-V2*' 
+        caption: '> 𝙋𝙍𝙄𝙉𝘾𝙀 𝙈𝘿 𝙑𝙄𝘿𝙀𝙊 𝘿𝙊𝙒𝙉𝙇𝙊𝘼𝘿𝙀𝙍' 
     }, { quoted: m });
     break;
 }
@@ -3808,7 +3807,7 @@ case 'fbdl': {
         if (!args.join(" ")) return reply(`Example : -yts Heat waves`)
         let yts = require("youtube-yts")
         let search = await yts(args.join(" "))
-        let teks = '```「 PRINCE-MD-V2YTS 」```\n\n Search Term: ' + text + '\n\n'
+        let teks = '```「 𝐏𝐑𝐈𝐍𝐂𝐄-𝐌𝐃-𝐕𝟐𝐘𝐓𝐒 」```\n\n Search Term: ' + text + '\n\n'
         let no = 1
         for (let i of search.all) {
           teks += `Result No : ${no++}\n\nTitle : ${i.title}\n\nViews : ${i.views}\n\nDuration : ${i.timestamp}\n\nUploaded : ${i.ago}\n\nAuthor : ${i.author.name}\n\nUrl : ${i.url}\n\n\n-----------------------------------------------------------------------------\n\n\n`
@@ -3832,7 +3831,7 @@ case 'ttdl': {
     Taira.sendMessage(from, { 
         video: { url: videoUrl }, 
         mimetype: "video/mp4", 
-        caption: '> *PRINCE-MD-V2*' 
+       caption: '> 𝙋𝙍𝙄𝙉𝘾𝙀 𝙈𝘿 𝙑𝙄𝘿𝙀𝙊 𝘿𝙊𝙒𝙉𝙇𝙊𝘼𝘿𝙀𝙍' 
     }, { quoted: m });
     break;
 }
@@ -3864,7 +3863,7 @@ case 'ytv': {
     Taira.sendMessage(from, { 
         video: { url: videoUrl }, 
         mimetype: "video/mp4", 
-        caption: '> *PRINCE-MD-V2*' 
+       caption: '> 𝙋𝙍𝙄𝙉𝘾𝙀 𝙈𝘿 𝙑𝙄𝘿𝙀𝙊 𝘿𝙊𝙒𝙉𝙇𝙊𝘼𝘿𝙀𝙍' 
     }, { quoted: m });
     break;
 }
@@ -3962,7 +3961,7 @@ case 'ytdggg': case 'ytxxxx': {
                         externalAdReply: {
                             showAdAttribution: true,
                             title: `Uptime/Runtime ${runtime(process.uptime())}`,
-                            body: `PRINCE TECH`,
+                            body: `ᴘʀɪɴᴄᴇ ᴛᴇᴄʜ`,
                             thumbnailUrl: 'https://i.imgur.com/jCrFYOL.jpeg',
                             sourceUrl: 'https://whatsapp.com/channel/0029VajcRr0GpLHR6PjdgN3N',
                             mediaType: 1,
@@ -4104,6 +4103,7 @@ case 'ytdggg': case 'ytxxxx': {
 case "video":
       case "ytmp4":
         {
+            Taira.sendMessage(from, { react: { text: "🎥", key: m.key } })
           if (!text) return reply("What video do you want to download ");
         let kyuu = await fetchJson (`https://api.agatz.xyz/api/ytsearch?message=${text}`);
         let tylor = await fetchJson (`https://exonity.tech/api/ytdlp2-faster?apikey=adminsepuh&url=${kyuu.data[0].url}`);
@@ -4113,9 +4113,10 @@ case "video":
                 video: { url: tylor.result.video },
                 fileName: `${tylor.result.title}.mp4`,
                 mimetype: "video/mp4",
+                    caption: '> 𝙋𝙍𝙄𝙉𝘾𝙀 𝙈𝘿 𝙑𝙄𝘿𝙀𝙊 𝘿𝙊𝙒𝙉𝙇𝙊𝘼𝘿𝙀𝙍',
                 contextInfo: {
         externalAdReply: {
-          title: `PRINCE MD V2`,
+          title: `𝙋𝙍𝙄𝙉𝘾𝙀-𝙈𝘿-𝙑2`,
           body: `${tylor.result.title}.mp4`,
           thumbnailUrl: `https://i.imgur.com/jCrFYOL.jpeg`,
           sourceUrl: `${tylor.result.video}`,
@@ -4131,6 +4132,7 @@ case "video":
      case "play":
       case "ytmp3":
         {
+            Taira.sendMessage(from, { react: { text: "🎶", key: m.key } })
           if (!text) return reply("What song do you want to download ");
         let kyuu = await fetchJson (`https://api.agatz.xyz/api/ytsearch?message=${text}`);
         let tylor = await fetchJson (`https://api.agatz.xyz/api/ytmp3?url=${kyuu.data[0].url}`);
@@ -4142,7 +4144,7 @@ case "video":
                 mimetype: "audio/mpeg",
                 contextInfo: {
         externalAdReply: {
-          title: `PRINCE MD V2`,
+          title: `𝙋𝙍𝙄𝙉𝘾𝙀-𝙈𝘿-𝙑2`,
           body: `${tylor.data[0].title}.mp3`,
           thumbnailUrl: `https://i.imgur.com/jCrFYOL.jpeg`,
           sourceUrl: `${tylor.data[0].downloadUrl}`,
@@ -4158,6 +4160,7 @@ case "video":
      case "song":
       case "music":
         {
+           Taira.sendMessage(from, { react: { text: "🎶", key: m.key } })  
           if (!text) return reply("What music do you want to download ");
         let kyuu = await fetchJson (`https://api.agatz.xyz/api/ytsearch?message=${text}`);
         let tylor = await fetchJson (`https://exonity.tech/api/ytdlp2-faster?apikey=adminsepuh&url=${kyuu.data[0].url}`);
@@ -4169,7 +4172,7 @@ case "video":
                 mimetype: "audio/mpeg",
                 contextInfo: {
         externalAdReply: {
-          title: `PRINCE MD V2`,
+          title: `𝙋𝙍𝙄𝙉𝘾𝙀-𝙈𝘿-𝙑2`,
           body: `${tylor.result.title}.mp3`,
           thumbnailUrl: `https://i.imgur.com/jCrFYOL.jpeg`,
           sourceUrl: `${tylor.result.audio}`,
@@ -5155,7 +5158,7 @@ case "video":
 ┃ • ᴀᴜᴛᴏ-ꜱᴛᴀᴛᴜꜱ
 ┃ • ʀᴇᴄᴏʀᴅɪɴɢ 
 ╰════════════════ ⪨
-╭═══════════════ ⪩
+╭═══════════════ ⪩${readmore}
 ╰╮╰┈➤ *OWNER*
 ╭═══════════════ ⪩
 ┃ • Addowner
@@ -5182,7 +5185,7 @@ case "video":
 ┃ • ANTICALL
 ┃ • STATUSVIEW
 ╰════════════════ ⪨
-╭═══════════════ ⪩
+╭═══════════════ ⪩${readmore}
 ╰╮╰┈➤ *BUGS*
 ╭═══════════════ ⪩
 ┃ •  iloveyou amount pc/gc
@@ -5195,7 +5198,7 @@ case "video":
 ╰════════════════ ⪨
 ╭═══════════════ ⪩
 ╰╮╰┈➤ *GROUP*
-╭═══════════════ ⪩
+╭═══════════════ ⪩${readmore}
 ┃ • ᴘʀᴏᴍᴏᴛᴇ  
 ┃ • ᴅᴇᴍᴏᴛᴇ  
 ┃ • ɢʀᴏᴜᴘ-ᴇᴠᴇɴᴛ  
@@ -5226,7 +5229,7 @@ case "video":
 ┃ • Mute
 ┃ • Unmute
 ╰════════════════ ⪨
-╭═══════════════ ⪩
+╭═══════════════ ⪩${readmore}
 ╰╮╰┈➤ *AI*
 ╭═══════════════ ⪩
 ┃ • ɢᴘᴛ 
@@ -5236,7 +5239,7 @@ case "video":
 ┃ • ᴛᴏʟᴇᴛᴛᴇʀ
 ┃ • ᴛʀᴀɴꜱʟᴀᴛᴇ
 ╰════════════════ ⪨
-╭═══════════════ ⪩
+╭═══════════════ ⪩${readmore}
 ╰╮╰┈➤ *DOWNLOADER*
 ╭═══════════════ ⪩
 ┃ •  ᴘʟᴀʏ
@@ -5267,7 +5270,7 @@ case "video":
 ┃ •  ᴛᴡɪᴛᴛᴇʀ
 ┃ •  ᴛɪᴋᴛᴏᴋ
 ┃ •  happymod
-╰════════════════ ⪨
+╰════════════════ ⪨${readmore}
 ╭═══════════════ ⪩
 ╰╮╰┈➤ *GAMES*
 ╭═══════════════ ⪩
