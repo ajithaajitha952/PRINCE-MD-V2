@@ -2823,7 +2823,7 @@ break;
         if (!m.isGroup) return reply(mess.grouponly);
         if (!isAdmins && !isCreator) return reply(mess.useradmin)
         Taira.sendMessage(from, { react: { text: "😎", key: m.key } })
-        let teks = `*▢ Group*: ${groupMetadata.subject}\n*▢ Message*: ${args.join(" ") ? args.join(" ") : '* no message *'} \n ┌───⊷MENTIONS ───⊷\n${readmore}` 
+        let teks = `*▢ Group*: ${groupMetadata.subject}\n*▢ Members*: ${groupMetadata.participants.length ?groupMetadata.participants.length : "undefined"} \n*▢ Message*: ${args.join(" ") ? args.join(" ") : 'no message'} \n ┌───⊷ *MENTIONS* ───⊷\n${readmore}` 
         for (let mem of participants) {
           teks += `▢ @${mem.id.split('@')[0]}\n`
         }
