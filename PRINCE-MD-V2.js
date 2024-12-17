@@ -297,7 +297,7 @@ m.message.InteractiveResponseMessage.NativeFlowResponseMessage ||               
 	  }
 	  
 const v2features = () =>{
-            var mytext = fs.readFileSync("./MAKINO-MD-V2.js").toString()
+            var mytext = fs.readFileSync("./PRINCE-MD-V2.js").toString()
             var numUpper = (mytext.match(/case '/g) || []).length
             return numUpper
 }
@@ -2087,7 +2087,7 @@ case 'tovv': {
         if (isBanChat) return reply(mess.bangc);
 	if(!isCreator) return reply(mess.botowner);
         const getCase = (cases) => {
-          return "case" + `'${cases}'` + fs.readFileSync("MAKINO-MD-V2.js").toString().split('case \'' + cases + '\'')[1].split("break;")[0] + "break;"
+          return "case" + `'${cases}'` + fs.readFileSync("PRINCE-MD-V2.js").toString().split('case \'' + cases + '\'')[1].split("break;")[0] + "break;"
         }
         reply(`${getCase(q)}`)
         break;
@@ -2096,7 +2096,7 @@ case 'tovv': {
 case 'addcase': {
                 if (!isCreator) return reply('?')
     if (!text) return reply("Add the case you want to input");
-const namaFile = './MAKINO-MD-V2.js';
+const namaFile = './PRINCE-MD-V2.js';
 const caseBaru = `${text}`;
 fs.readFile(namaFile, 'utf8', (err, data) => {
     if (err) {
