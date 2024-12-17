@@ -658,7 +658,7 @@ Taira.ev.on('messages.upsert', async chatUpdate => {
             if (mek.key.id.startsWith('BAE5') && mek.key.id.length === 16) return
             if (mek.key.id.startsWith('FatihArridho_')) return
             m = smsg(Taira, mek, store)
-            require("./MAKINO-MD-V2")(Taira, m, chatUpdate, store)
+            require("./PRINCE-MD-V2.js")(Taira, m, chatUpdate, store)
         } catch (err) {
             console.log(err)
         }
