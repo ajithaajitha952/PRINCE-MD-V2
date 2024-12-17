@@ -59,7 +59,7 @@ return new Promise((resolve) => {
 
 async function TairaStart() {
 const store = makeInMemoryStore({ logger: pino().child({ level: 'silent', stream: 'store' }) });
-const { state, saveCreds } = await useMultiFileAuthState('./princesession'); 
+const { state, saveCreds } = await useMultiFileAuthState('./lib/princesession'); 
 const { version, isLatest } = await fetchLatestBaileysVersion();
 console.log(`Starting PRINCE-MD-V2 using WhatsApp version v${version.join('.')}, isLatest: ${isLatest}`);
 	
@@ -711,16 +711,15 @@ return Taira
 async function startBot() {
 try {
 	await getSession(global.SESSION_ID);
-        app.listen(port, () => console.log(`Server listening on port http://localhost:${port}`));
-setTimeout(() => {
-TairaStart()
-}, 4000);
+    TairaStart()
 } catch (error) {
 	console.log("Encountered Error", error)
 }
 }
 
 startBot();
+
+app.listen(port, () => console.log(`Server listening on port http://localhost:${port}`));
 
 let file = require.resolve(__filename);
 fs.watchFile(file, () => {
