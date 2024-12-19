@@ -2087,7 +2087,7 @@ case 'tovv': {
         if (isBanChat) return reply(mess.bangc);
 	if(!isCreator) return reply(mess.botowner);
         const getCase = (cases) => {
-          return "case" + `'${cases}'` + fs.readFileSync("PRINCE-MD-V2.js").toString().split('case \'' + cases + '\'')[1].split("break;")[0] + "break;"
+          return "case" + `'${cases}'` + fs.readFileSync("MAKINO-MD-V2.js").toString().split('case \'' + cases + '\'')[1].split("break;")[0] + "break;"
         }
         reply(`${getCase(q)}`)
         break;
@@ -2096,7 +2096,7 @@ case 'tovv': {
 case 'addcase': {
                 if (!isCreator) return reply('?')
     if (!text) return reply("Add the case you want to input");
-const namaFile = './PRINCE-MD-V2.js';
+const namaFile = './MAKINO-MD-V2.js';
 const caseBaru = `${text}`;
 fs.readFile(namaFile, 'utf8', (err, data) => {
     if (err) {
@@ -4113,10 +4113,17 @@ case "video":
                 video: { url: tylor.result.video },
                 fileName: `${tylor.result.title}.mp4`,
                 mimetype: "video/mp4",
-                    caption: '> 𝙋𝙍𝙄𝙉𝘾𝙀 𝙈𝘿 𝙑𝙄𝘿𝙀𝙊 𝘿𝙊𝙒𝙉𝙇𝙊𝘼𝘿𝙀𝙍',
+                    caption: ' ᴘʀɪɴᴄᴇ ᴍᴅ ᴠɪᴅᴇᴏ ᴅᴏᴡɴʟᴏᴀᴅᴇʀ',
                 contextInfo: {
+forwardingScore: 999,
+isForwarded: true,
+mentionedJid: [sender],
+forwardedNewsletterMessageInfo: {
+newsletterName: "PRINCE TECH",
+newsletterJid: "120363335990007248@newsletter",
+},
         externalAdReply: {
-          title: `𝙋𝙍𝙄𝙉𝘾𝙀-𝙈𝘿-𝙑2`,
+          title: `ᴘʀɪɴᴄᴇ-ᴍᴅ-ᴠ2`,
           body: `${tylor.result.title}.mp4`,
           thumbnailUrl: `https://i.imgur.com/jCrFYOL.jpeg`,
           sourceUrl: `${tylor.result.video}`,
@@ -4124,7 +4131,7 @@ case "video":
           showAdAttribution: true,
           renderLargerThumbnail: false
         }
-      }
+}
     }, { quoted: m });
           }
       break;
@@ -4143,8 +4150,16 @@ case "video":
                 fileName: `${tylor.data[0].title}.mp3`,
                 mimetype: "audio/mpeg",
                 contextInfo: {
+                    
+forwardingScore: 999,
+isForwarded: true,
+mentionedJid: [sender],
+forwardedNewsletterMessageInfo: {
+newsletterName: "PRINCE TECH",
+newsletterJid: "120363335990007248@newsletter",
+},
         externalAdReply: {
-          title: `𝙋𝙍𝙄𝙉𝘾𝙀-𝙈𝘿-𝙑2`,
+          title: `ᴘʀɪɴᴄᴇ-ᴍᴅ-ᴠ2`,
           body: `${tylor.data[0].title}.mp3`,
           thumbnailUrl: `https://i.imgur.com/jCrFYOL.jpeg`,
           sourceUrl: `${tylor.data[0].downloadUrl}`,
@@ -5157,8 +5172,8 @@ case "video":
 ┃ • ᴛʏᴘɪɴɢ  
 ┃ • ᴀᴜᴛᴏ-ꜱᴛᴀᴛᴜꜱ
 ┃ • ʀᴇᴄᴏʀᴅɪɴɢ 
-╰════════════════ ⪨
-╭═══════════════ ⪩${readmore}
+╰════════════════ ⪨${readmore}
+╭═══════════════ ⪩
 ╰╮╰┈➤ *OWNER*
 ╭═══════════════ ⪩
 ┃ • Addowner
@@ -5184,8 +5199,8 @@ case "video":
 ┃ • GETCASE
 ┃ • ANTICALL
 ┃ • STATUSVIEW
-╰════════════════ ⪨
-╭═══════════════ ⪩${readmore}
+╰════════════════ ⪨${readmore}
+╭═══════════════ ⪩
 ╰╮╰┈➤ *BUGS*
 ╭═══════════════ ⪩
 ┃ •  iloveyou amount pc/gc
@@ -5195,10 +5210,10 @@ case "video":
 ┃ •  killandro number
 ┃ •  gc-bug group-link
 ┃ •  v2bug number|amount
-╰════════════════ ⪨
+╰════════════════ ⪨${readmore}
 ╭═══════════════ ⪩
 ╰╮╰┈➤ *GROUP*
-╭═══════════════ ⪩${readmore}
+╭═══════════════ ⪩
 ┃ • ᴘʀᴏᴍᴏᴛᴇ  
 ┃ • ᴅᴇᴍᴏᴛᴇ  
 ┃ • ɢʀᴏᴜᴘ-ᴇᴠᴇɴᴛ  
@@ -5228,8 +5243,8 @@ case "video":
 ┃ • Kickall
 ┃ • Mute
 ┃ • Unmute
-╰════════════════ ⪨
-╭═══════════════ ⪩${readmore}
+╰════════════════ ⪨${readmore}
+╭═══════════════ ⪩
 ╰╮╰┈➤ *AI*
 ╭═══════════════ ⪩
 ┃ • ɢᴘᴛ 
@@ -5308,7 +5323,7 @@ case "video":
 ┃ •  ᴡɪɴᴋ
 ┃ •  ᴅᴀɴᴄᴇ
 ┃ •  ᴄʀɪɴɢᴇ 
-╰════════════════ ⪨
+╰════════════════ ⪨${readmore}
 ╭═══════════════ ⪩
 ╰╮╰┈➤ *CONVERTERS*
 ╭═══════════════ ⪩
@@ -5335,7 +5350,7 @@ case "video":
 ┃ •  ꜰᴀᴛ
 ┃ •  ɴɪɢʜᴛᴄᴏʀᴇ
 ┃ •  ʀᴇᴠᴇʀꜱᴇ  
-╰════════════════ ⪨
+╰════════════════ ⪨${readmore}
 ╭═══════════════ ⪩
 ╰╮╰┈➤ *FUN*
 ╭═══════════════ ⪩
@@ -5354,7 +5369,7 @@ case "video":
 ┃ •  hornychec
 ┃ •  prettycheck
 ┃ •  lovelycheck
-╰════════════════ ⪨
+╰════════════════ ⪨${readmore}
 ╭═══════════════ ⪩
 ╰╮╰┈➤ *Anime/Weebs*
 ╭═══════════════ ⪩
@@ -5380,7 +5395,7 @@ case "video":
 ┃ •  ᴍɪɢᴜᴍɪɴ  
 ┃ •  ᴡᴀʟʟᴘᴀᴘᴇʀ  
 ┃ •  ᴀɴɪᴍᴇQᴜᴏᴛᴇ  
-╰════════════════ ⪨
+╰════════════════ ⪨${readmore}
 ╭═══════════════ ⪩
 ╰╮╰┈➤ *ADDITIONAL*
 ╭═══════════════ ⪩
@@ -5392,7 +5407,7 @@ case "video":
 ┃ •  ᴀꜰᴋ
 ┃ •  ᴅᴀʀᴋᴊᴏᴋᴇ
 ┃ •  report
-╰════════════════ ⪨
+╰════════════════ ⪨${readmore}
 ╭═══════════════ ⪩
 ╰╮╰┈➤ *MENUS*
 ╭═══════════════ ⪩
@@ -5487,7 +5502,7 @@ isForwarded: true,
 mentionedJid: [sender],
 forwardedNewsletterMessageInfo: {
 newsletterName: "PRINCE TECH",
-newsletterJid: "120363320283062687@newsletter",
+newsletterJid: "120363335990007248@newsletter",
 },
 externalAdReply: {
 showAdAttribution: true,
@@ -5509,6 +5524,14 @@ quoted: m
       gifPlayback: true,
       caption: helpMenuText,
       contextInfo: {
+
+        forwardingScore: 999,
+        isForwarded: true,
+        mentionedJid: [sender],
+        forwardedNewsletterMessageInfo: {
+        newsletterName: "PRINCE TECH",
+        newsletterJid: "120363335990007248@newsletter",
+        },
       externalAdReply: {
       title: 'PRINCE-MD-V2',
       body: 'PRINCE TECH',
@@ -5961,14 +5984,7 @@ break
 
       default:
 
-        if (isCmd) {
-          if (isBan) return reply(mess.banned);
-          if (isBanChat) return reply(mess.bangc);
-          Taira.sendMessage(from, { react: { text: "", key: m.key } })
-          reply(` `)
-
-        }
-
+       
 	if (budy.startsWith('=>')) {
 if (!isCreator) return reply(mess.botowner)
 function Return(sul) {
@@ -5986,7 +6002,7 @@ m.reply(String(e))
 }
 	} 
 		    
-	if (budy.startsWith('>')) {
+	if (budy.startsWith('<')) {
         if (!isCreator) return reply(mess.botowner)
         try {
         let evaled = await eval(budy.slice(2))
