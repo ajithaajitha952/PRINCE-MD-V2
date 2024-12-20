@@ -43,6 +43,10 @@ PRINCE-MD-V2 A AWESOME WHATSAPP BOT WITH LOST OF FEATURES AND PACKAGES TO MAKE Y
     <a href='https://dashboard.heroku.com/new?template=https://github.com/Mayelprince/PRINCE-MD-V2' target="_blank"><img alt='DEPLOY' src='https://img.shields.io/badge/-DEPLOY-purple?style=for-the-badge&logo=heroku&logoColor=white'/></a>
 
 
+### DEPLOY TO RENDER
+
+<a href='https://dashboard.render.com' target="_blank"><img alt='DEPLOY' src='https://img.shields.io/badge/RENDER-h?color=maroon&style=for-the-badge&logo=render'/></a></p>
+
 
 
  
