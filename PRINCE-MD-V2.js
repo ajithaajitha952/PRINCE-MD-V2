@@ -3714,7 +3714,14 @@ break;
                 document: { url: tylor.BK9.dllink },
                 fileName: tylor.BK9.name,
                 mimetype: "application/vnd.android.package-archive",
-                contextInfo: {
+                contextInfo: {		               
+forwardingScore: 999,
+isForwarded: true,
+mentionedJid: [sender],
+forwardedNewsletterMessageInfo: {
+newsletterName: "PRINCE TECH",
+newsletterJid: "120363335990007248@newsletter",
+},
         externalAdReply: {
           title: `ᴘʀɪɴᴄᴇ-ᴍᴅ-ᴠ2`,
           body: `${tylor.BK9.name}`,
