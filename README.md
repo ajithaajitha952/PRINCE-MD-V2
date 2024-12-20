@@ -33,6 +33,15 @@ PRINCE-MD-V2 A AWESOME WHATSAPP BOT WITH LOST OF FEATURES AND PACKAGES TO MAKE Y
 <a href='https://prince-md-v2-session-id-gfjk.onrender.com' target="_blank"><img alt='SESSION ID' src='https://img.shields.io/badge/Session_id-100000?style=for-the-badge&logo=scan&logoColor=white&labelColor=black&color=black'/></a>
 
 
+ ### DEPLOY ON HEROKU
+
+1. If you don't have an account in Heroku, create one.
+    <br>
+    <a href='https://signup.heroku.com/' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-Create-purple?style=for-the-badge&logo=heroku&logoColor=white'/></a>
+2. Now deploy.
+    <br>
+    <a href='https://dashboard.heroku.com/new?template=https://github.com/Mayelprince/PRINCE-MD-V2' target="_blank"><img alt='DEPLOY' src='https://img.shields.io/badge/-DEPLOY-purple?style=for-the-badge&logo=heroku&logoColor=white'/></a>
+
 
 
 
