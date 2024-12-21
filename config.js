@@ -16,10 +16,10 @@ global.autoviewstatus = false;                 //make true to view statuses
 global.anticall = false
 
 
-global.SESSION_ID = process.env.SESSION_ID || "prince_md-LQ9B0YTK#UZGVjYvKU4Vn5E8p7iQvzUhOMR6GAanB-I4qedC2q70"
-global.Owner = ["237682698517"]; //like 2347080968564 
-global.OwnerName =  "PRINCE";
-global.BotName = "PRINCE-MD-V2";
+global.SESSION_ID = process.env.SESSION_ID || "prince_md-yBcRHAiL#hz_yk4TEGymQ9dPPOO8XSL_iBx9GTLIeV0ouyl8Bq80"
+global.Owner = ["919567979878"]; //like 2347080968564 
+global.OwnerName =  "𝐌𝚛-𝐍𝚒𝚔𝚑𝚒𝚕";
+global.BotName = "©Ｓuяꪗα-вꪮт🧃";
 global.packname = "PRINCE-MD-V2";                             //Do not change.
 global.author = "PRINCE-TECH";                               //Do not change.
 global.BotSourceCode = "https://github.com/Mayelprince/PRINCE-MD-V2"; //Do not change.
